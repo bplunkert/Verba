@@ -19,7 +19,7 @@ class GithubReader(Reader):
         super().__init__()
         self.name = "GithubReader"
         self.requires_env = ["GITHUB_TOKEN"]
-        self.description = "Downloads only text files from a GitHub repository and ingests it into Verba. Use this format {owner}/{repo}/{folder}"
+        self.description = "Downloads files from a GitHub repository and ingests it into Verba. Use this format {owner}/{repo}/{folder}"
         self.input_form = InputForm.INPUT.value
 
     def load(
@@ -110,12 +110,12 @@ class GithubReader(Reader):
             item["path"]
             for item in response.json()["tree"]
             if item["path"].startswith(folder_path)
-            and (
-                item["path"].endswith(".md")
-                or item["path"].endswith(".mdx")
-                or item["path"].endswith(".txt")
-                or item["path"].endswith(".json")
-            )
+            # and (
+            #     item["path"].endswith(".md")
+            #     or item["path"].endswith(".mdx")
+            #     or item["path"].endswith(".txt")
+            #     or item["path"].endswith(".json")
+            # )
         ]
         msg.info(
             f"Fetched {len(files)} filenames from {url} (checking folder {folder_path})"
