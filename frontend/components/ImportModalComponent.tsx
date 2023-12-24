@@ -148,7 +148,7 @@ const ImportModal: React.FC<ImportModalProps> = ({ onClose, apiHost }) => {
     const { getRootProps, getInputProps } = useDropzone({
         onDrop,
         accept: {
-            'text/txt': ['.txt', '.md', '.mdx', '.pdf'],
+            'text/txt': ['.txt', '.md', '.mdx', '.pdf', '.py', '.sh', '.rb', '.js', '.ts', '.tsx', '.jsx'],
             'text/json': ['.json']
         }
     });
